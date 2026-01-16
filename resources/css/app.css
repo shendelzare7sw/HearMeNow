@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+:root {
+    --brand-yellow: #FFD700;
+    --brand-orange: #FF8C00;
+    --brand-green: #32CD32;
+    --brand-lime: #9ACD32;
+    --app-dark: #0a0a0a;
+    --app-darker: #050505;
+    --app-gray: #1a1a1a;
+    --app-light-gray: #2a2a2a;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--app-dark);
+    color: #fff;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange), var(--brand-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gradient Background */
+.gradient-bg {
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange), var(--brand-green));
+}
+
+.gradient-bg-hover:hover {
+    background: linear-gradient(135deg, #ffe135, #ff9f1c, #3de03d);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Player Progress Bar */
+.progress-bar {
+    @apply relative h-1 bg-gray-700 rounded-full overflow-hidden cursor-pointer;
+}
+
+.progress-bar:hover {
+    @apply h-2;
+}
+
+.progress-bar .progress-fill {
+    @apply absolute left-0 top-0 h-full rounded-full;
+    background: linear-gradient(90deg, var(--brand-yellow), var(--brand-orange));
+    transition: width 0.1s linear;
+}
+
+/* Volume Slider */
+.volume-slider {
+    @apply w-24 h-1 rounded-full cursor-pointer appearance-none;
+    background: linear-gradient(to right, #fff var(--volume-percent, 50%), #4b5563 var(--volume-percent, 50%));
+}
+
+.volume-slider:hover {
+    @apply h-2;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    @apply appearance-none w-3 h-3 bg-white rounded-full cursor-pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+    @apply w-3 h-3 bg-white rounded-full cursor-pointer border-0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider::-webkit-slider-runnable-track {
+    @apply h-1 rounded-full;
+}
+
+.volume-slider:hover::-webkit-slider-runnable-track {
+    @apply h-2;
+}
+
+/* Song Card */
+.song-card {
+    @apply rounded-lg p-4 transition-all duration-300;
+    background-color: var(--app-gray);
+}
+
+.song-card:hover {
+    background-color: var(--app-light-gray);
+    box-shadow: 0 8px 32px rgba(255, 140, 0, 0.15);
+    transform: scale(1.02);
+}
+
+.song-card .play-button {
+    @apply opacity-0 transition-all duration-200;
+    transform: translateY(8px);
+}
+
+.song-card:hover .play-button {
+    @apply opacity-100;
+    transform: translateY(0);
+}
+
+/* Playlist Card */
+.playlist-card {
+    @apply rounded-lg overflow-hidden transition-all duration-300;
+    background-color: var(--app-gray);
+}
+
+.playlist-card:hover {
+    background-color: var(--app-light-gray);
+}
+
+/* Button Styles */
+.btn-primary {
+    @apply font-semibold py-3 px-8 rounded-full transition-all duration-200;
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-orange));
+    color: black;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ffe135, #ff9f1c);
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+}
+
+.btn-secondary {
+    @apply bg-transparent border-2 border-white/30 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200;
+}
+
+.btn-secondary:hover {
+    @apply border-white bg-white/10;
+}
+
+/* Navigation */
+.nav-link {
+    @apply flex items-center gap-4 px-4 py-2 transition-colors duration-200 text-gray-400;
+}
+
+.nav-link:hover {
+    @apply text-white;
+}
+
+.nav-link.active {
+    @apply text-white;
+}
+
+/* Player Controls */
+.player-control {
+    @apply transition-colors duration-200 text-gray-400;
+}
+
+.player-control:hover {
+    @apply text-white;
+}
+
+.player-control.active {
+    color: var(--brand-orange);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+    }
+}
+
+.playing-indicator {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Loading Spinner */
+.spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2;
+    border-color: var(--brand-orange);
+}
+
+/* Glass Effect */
+.glass {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Drag and Drop */
+.dropzone {
+    @apply border-2 border-dashed border-gray-600 rounded-xl p-8 text-center transition-all duration-300;
+}
+
+.dropzone.dragover {
+    border-color: var(--brand-orange);
+    background-color: rgba(255, 140, 0, 0.1);
+}
+
+/* Toast Notifications */
+.toast {
+    @apply fixed left-1/2 px-4 py-2 rounded-lg shadow-lg z-50;
+    bottom: 6rem;
+    transform: translateX(-50%);
+    background-color: var(--app-gray);
+    color: white;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+/* Utility Classes */
+.bg-app-dark {
+    background-color: var(--app-dark);
+}
+
+.bg-app-darker {
+    background-color: var(--app-darker);
+}
+
+.bg-app-gray {
+    background-color: var(--app-gray);
+}
+
+.bg-app-light-gray {
+    background-color: var(--app-light-gray);
+}
+
+.text-brand-yellow {
+    color: var(--brand-yellow);
+}
+
+.text-brand-orange {
+    color: var(--brand-orange);
+}
+
+.text-brand-green {
+    color: var(--brand-green);
+}
+
+.border-brand-orange {
+    border-color: var(--brand-orange);
+}
